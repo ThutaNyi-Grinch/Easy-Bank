@@ -1,0 +1,99 @@
+.footer {
+  background: $darkBlue;
+  padding: 2.5rem;
+  text-align: center;
+  .container {
+    @include breakPoint-Up(large) {
+      display: grid;
+      grid-template-columns: 2fr repeat(2, 1fr) 2fr;
+      grid-template-rows: 1fr auto;
+      gap: 1rem;
+      grid-template-areas: "logo col1 col2 cta" "social col1 col2 cpy";
+      justify-items: start;
+    }
+  }
+  a {
+    color: $white;
+  }
+
+  &__logo {
+    display: inline-block;
+    @include breakPoint-Down(medium) {
+      margin-bottom: 1.875rem;
+    }
+    @include breakPoint-Up(large) {
+      grid-area: logo;
+    }
+  }
+  &__social {
+    @include breakPoint-Down(medium) {
+      margin-bottom: 1.875rem;
+    }
+    @include breakPoint-Up(large) {
+      grid-area: social;
+      align-self: end;
+    }
+    a {
+      display: inline-block;
+      height: 1.25rem;
+      transition: fill 150ms ease-in-out;
+      &:hover svg path {
+        fill: $limeGreen;
+      }
+    }
+    a:not(:last-child) {
+      margin-right: 1rem;
+    }
+  }
+  &__link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.9375rem;
+    @include breakPoint-Up(large) {
+      align-items: start;
+      justify-content: space-between;
+    }
+    &.col1 {
+      @include breakPoint-Up(large) {
+        grid-area: col1;
+      }
+    }
+    &.col2 {
+      @include breakPoint-Down(medium) {
+        margin-bottom: 1.875rem;
+      }
+      @include breakPoint-Up(large) {
+        grid-area: col2;
+      }
+    }
+    a {
+      line-height: 2.25rem;
+      transition: color 150ms ease-in-out;
+      &:hover {
+        color: $limeGreen;
+      }
+    }
+  }
+  &__cta {
+    @include breakPoint-Up(large) {
+      grid-area: cta;
+      text-align: right;
+      justify-self: end;
+    }
+    a.button {
+      @include breakPoint-Down(medium) {
+        margin-bottom: 1.875rem;
+      }
+    }
+  }
+  &__copyright {
+    font-size: 0.8125rem;
+    color: $grayishBlue;
+    @include breakPoint-Up(large) {
+      grid-area: cpy;
+      align-self: end;
+      justify-self: end;
+    }
+  }
+}
